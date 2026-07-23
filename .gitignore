@@ -1,0 +1,26 @@
+# This repo is setup glue only — never commit weights, models, or generated data.
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.npz
+*.obj
+*.glb
+*.mp4
+*.png
+*.jpg
+weights/
+checkpoints/
+outputs/
+all_frames/
+**/mano/
+MANO_*.pkl
+# caches / build
+__pycache__/
+*.pyc
+*.egg-info/
+.cache/
+.condarc
+# scratch
+tmp/
+*.log

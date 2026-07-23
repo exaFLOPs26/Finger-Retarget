@@ -1,0 +1,21 @@
+diff --git a/reconstruction/config/paths.sh b/reconstruction/config/paths.sh
+index 6b29dc9..0c59121 100644
+--- a/reconstruction/config/paths.sh
++++ b/reconstruction/config/paths.sh
+@@ -27,10 +27,14 @@ export TAPNET_CKPT="$WEIGHTS_DIR/tapnet/bootstapir_checkpoint_v2.pt"
+ # (sam3 / hawor / tapnet already match) — set ENV_SAM3D accordingly.
+ export ENV_SAM3=sam3
+ export ENV_SAM3D=sam3d
+-export ENV_HAWOR=hawor
+-export ENV_TAPNET=tapnet
++export ENV_HAWOR=daid_hawor   # was 'hawor' — renamed to avoid clobbering the user's existing upstream-HaWoR env
++export ENV_TAPNET=daid_tapnet   # was 'tapnet' — that env resolved to GraalPy (no torch wheels); force CPython instead
+ 
+ # ── Host / GPU ──
+ export CUDA_VISIBLE_DEVICES=0
+ # X display used by the click-based SAM3 segmentation UI (Stage 1).
+ export SAM3_DISPLAY=:1
++
++# sam3d_objects/__init__.py imports a Meta-internal `init` module not shipped in
++# the fork; the repo's own scripts set this to skip it. Set globally for all stages.
++export LIDRA_SKIP_INIT=true
